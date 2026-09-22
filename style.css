@@ -1,0 +1,95 @@
+:root {
+  --brat-green: #8ace00;
+  --brat-black: #000000;
+  --brat-font: "Arial Narrow", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--brat-green);
+  color: var(--brat-black);
+  font-family: var(--brat-font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Zapewnia przewijanie na bardzo małych ekranach w pionie */
+  padding: 20px 10px; 
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  /* Zapobiega rozciąganiu przycisku na całą szerokość dużego ekranu */
+  max-width: 500px; 
+  margin: auto;
+}
+
+/* Specjalny kontener dla h1 chroniący przed wychodzeniem tekstu poza ekran */
+.h1-wrapper {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: clamp(30px, 8vh, 60px);
+}
+
+h1 {
+  font-family: var(--brat-font);
+  /* Skalowanie fontu: minimalnie 2.5rem na telefonach, do 5.5rem na komputerach */
+  font-size: clamp(2.5rem, 12vw, 5.5rem);
+  font-weight: normal;
+  text-transform: lowercase;
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+  
+  /* Rozciągnięcie BRAT */
+  display: inline-block;
+  transform: scaleX(1.35); 
+  transform-origin: center;
+  filter: blur(0.7px);
+  
+  /* Bezpieczny margines boczny ze względu na rozciągnięcie poziome */
+  padding: 0 15px; 
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+button {
+  background-color: transparent;
+  color: var(--brat-black);
+  border: 3px solid var(--brat-black);
+  font-family: var(--brat-font);
+  /* Elastyczna wielkość czcionki w przycisku */
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-weight: bold;
+  text-transform: lowercase;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  max-width: 320px; /* Przycisk nie będzie za szeroki na komputerze */
+}
+
+button:hover {
+  background-color: var(--brat-black);
+  color: var(--brat-green);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+#message {
+  /* Skalowanie wylosowanej piosenki */
+  font-size: clamp(1.4rem, 5vw, 2.2rem);
+  font-weight: bold;
+  text-transform: lowercase;
+  margin-top: clamp(30px, 6vh, 50px);
+  min-height: 60px;
+  padding: 0 10px;
+  word-wrap: break-word;
+}
